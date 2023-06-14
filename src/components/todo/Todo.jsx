@@ -1,16 +1,19 @@
 import "./index.css";
 
-import Element from "../element/Element";
-
-const Todo = ({ todos }) => {
+const Todo = ({ todo, emoji }) => {
+  const onHandleClick = () => alert(todo.completed);
   return (
-    <>
-      <ul className="todo__ul">
-        {todos.map((element) => (
-          <Element data={element} key={element.id} />
-        ))}
-      </ul>
-    </>
+    <div className="todo" onClick={onHandleClick}>
+      <i
+        className={
+          todo.completed ? "fa-solid fa-check-double" : "fa-solid fa-clipboard"
+        }
+      ></i>
+      <p className="todo__p">
+        {todo.todo}
+        <span>{emoji}</span>
+      </p>
+    </div>
   );
 };
 
